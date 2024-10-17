@@ -1,18 +1,22 @@
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About.jsx';
+import Contact from './components/Contact';
 
-const Footer = () => {
+const App = () => {
   return (
-    <footer className="w-full bg-dark text-white p-4 shadow-lg border-t-2 border-light mt-auto">
-      <div className="flex justify-between items-center w-full px-4">
-        <img src='public/logo.png' className="w-10" alt="Logo" />
-        <ul className="flex space-x-4">
-          <li><Link to="/" className="hover:underline">Home</Link></li>
-          <li><Link to="/about" className="hover:underline">About</Link></li>
-          <li><Link to="/contact" className="hover:underline">Contact</Link></li>
-        </ul>
+    <Router>
+      <Navbar />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </div>
-    </footer>
+    </Router>
   );
 };
 
-export default Footer;
+export default App;

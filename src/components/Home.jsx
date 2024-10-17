@@ -98,19 +98,28 @@ const Home = () => {
       </div>
 
       {/* This is the second section */}
-      <div className='bg-light h-[65vh] flex justify-center items-center'>
-        <div className='flex justify-center items-center w-full px-10 gap-20'>
-          <img ref={photoAbout} src="public/people/sandLogo.jpg" className="w-[300px] mx-2 rounded-lg shadow-lg" alt="Sand" />
-          
-          <div ref={textAbout} className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[500px]'>
-            <h2 className="text-3xl text-white mb-4">Who we are</h2>
-            <p className="text-center text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            </p>
+      <div className='bg-light h-[100vh] flex justify-center items-center'>
+        <div className='flex justify-center items-center'>
+
+
+          <div className='m-0 p-0 w-[50vw] flex justify-center items-center'>
+            <img ref={photoAbout} src="public/people/sandLogo.jpg" className="lg:w-[600px] lg:rounded-lg w-[400px] rounded-full mx-2  shadow-lg" alt="Sand" />
           </div>
+
+
+
+          <div className='m-0 p-0 w-[50vw] flex justify-center items-center'>
+            <div ref={textAbout} className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[800px] lg:w-[500px]'>
+              <h2 className="text-3xl text-white mb-4">Who we are</h2>
+              <p className="text-center text-gray-300">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              </p>
+            </div>
+          </div>
+
 
         </div>
       </div>
