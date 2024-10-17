@@ -118,7 +118,7 @@ const Home = () => {
 
 
       {/* This is the third section */}
-      <div className='bg-white text-lime-50 h-[85vh] flex'>
+      <div className='bg-white text-lime-50 h-[85vh] flex mt-20'>
         <div className='logos relative flex h-[15vh] m-0 p-0 w-[100vw] '>
           <ul className='flex flex-nowrap gap-10 mx-5 h-[15vh]'>
             <li className='bg-dark p-2 w-[200px] rounded'>Img 1</li>
@@ -135,10 +135,10 @@ const Home = () => {
 
 
           <div className="absolute top-0 left-0 w-[350px] h-full z-2"
-              style={{ background: 'linear-gradient(to left, rgba(255, 255, 255, 0), light 50%, light)' }}>
+              style={{ background: 'linear-gradient(to left, rgba(255, 255, 255, 0), white)' }}>
           </div>
           <div className="absolute top-0 right-0 w-[350px] h-full z-2"
-              style={{ background: 'linear-gradient(to right, rgba(255, 255, 255, 0), light 50%, light' }}>
+              style={{ background: 'linear-gradient(to right, rgba(255, 255, 255, 0), white)' }}>
           </div>
 
 
@@ -147,7 +147,9 @@ const Home = () => {
 
       {/* This is the fourth section */}
       <div className='bg-dark h-[65vh]'>
-
+        <div className='flex justify-center items-center h-full'>
+          <h2 className='text-light text-4xl'>Contact Us</h2>
+        </div>
       </div>
       
     </div>
