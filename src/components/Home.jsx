@@ -98,8 +98,8 @@ const Home = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
+          duration: 3,
+          ease: 'sine.in',
           scrollTrigger: {
             trigger: testimonial,
             start: 'top 80%',
@@ -146,7 +146,7 @@ const Home = () => {
           <div className='m-0 p-0 w-[50vw] flex justify-center items-center'>
             <div ref={textAbout} className='flex flex-col items-center'>
               <div className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[800px] lg:w-[500px]'>
-                <h2 className="text-3xl text-white mb-4">Who we are</h2>
+                <h2 className="text-3xl text-white mb-4">Our Mission</h2>
                 <p className="text-center text-gray-300">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -155,7 +155,7 @@ const Home = () => {
                 </p>
               </div>
               <button
-                className="bg-dark text-light mt-4 p-2 w-[400px] lg:w-[200px] rounded-lg transition transform hover:scale-105"
+                className="bg-dark text-light mt-4 p-2 w-[400px] lg:w-[200px] rounded-lg transition transform hover:scale-105 border-2 border-light"
                 onClick={() => window.location.href = '/about'}
               >
                 Learn More
@@ -239,7 +239,7 @@ const Home = () => {
       </div>
 
             <button 
-              className='bg-light text-dark p-2 rounded-lg transition transform hover:scale-105 mt-10' 
+              className='bg-dark text-light p-2 rounded-lg transition transform hover:scale-105 mt-10 border-light border-2' 
               onClick={() => window.location.href = '/contact'}>
               Contact Us
             </button>
