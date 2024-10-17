@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../App.css';
 
 const Home = () => {
@@ -7,8 +8,14 @@ const Home = () => {
   const rightImgRef = useRef(null);
   const textTitle = useRef(null);
   const point = useRef(null);
+  const photoAbout = useRef(null);
+  const textAbout = useRef(null);
 
+  gsap.registerPlugin(ScrollTrigger);
+
+  
   useEffect(() => {
+
     gsap.fromTo(leftImgRef.current, 
       { x: '-100vw', opacity: 0 }, 
       { x: '0%', opacity: 1, duration: 5.5, ease: 'power3.out' } 
@@ -36,6 +43,38 @@ const Home = () => {
       }
     );
     
+    gsap.fromTo(photoAbout.current, 
+      { x: "-100vw"}, 
+      { 
+      x: 0, 
+      opacity: 1, 
+      duration: 2.5, 
+      ease: 'sine.out',
+      scrollTrigger: {
+        trigger: photoAbout.current,
+        start: 'top 90%',
+        end: 'top 30%',
+        toggleActions: 'play none none none'
+      }
+      } 
+    );
+
+    gsap.fromTo(textAbout.current, 
+      { x: "100vw"}, 
+      { 
+      x: 0, 
+      opacity: 1, 
+      duration: 2.5, 
+      ease: 'sine.out',
+      scrollTrigger: {
+        trigger: photoAbout.current,
+        start: 'top 90%',
+        end: 'top 30%',
+        toggleActions: 'play none none none'
+      }
+      } 
+    );
+
   }, []);
 
   return (
@@ -60,11 +99,11 @@ const Home = () => {
 
       {/* This is the second section */}
       <div className='bg-light h-[65vh] flex justify-center items-center'>
-        <div className='flex justify-around items-center w-full px-10'>
-          <img src="public/people/sandLogo.jpg" className="w-[25vw] mx-2 rounded-lg shadow-lg" alt="Sand" />
+        <div className='flex justify-center items-center w-full px-10 gap-20'>
+          <img ref={photoAbout} src="public/people/sandLogo.jpg" className="w-[300px] mx-2 rounded-lg shadow-lg" alt="Sand" />
           
-          <div className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[40%]'>
-            <h2 className="text-3xl text-white mb-4">Our Mission</h2>
+          <div ref={textAbout} className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[500px]'>
+            <h2 className="text-3xl text-white mb-4">Who we are</h2>
             <p className="text-center text-gray-300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -79,14 +118,31 @@ const Home = () => {
 
 
       {/* This is the third section */}
-      <div className='bg-white h-[85vh] flex'>
-      <ul className='flex justify-evenly gap-10 p-5 -mx-5 bg-dark h-[15vh] w-[100vw]'>
-        <li className='bg-light p-2 w-[10vw] rounded'>Img 1</li>
-        <li className='bg-light p-2 w-[10vw] rounded'>Img 2</li>
-        <li className='bg-light p-2 w-[10vw] rounded'>Img 3</li>
-        <li className='bg-light p-2 w-[10vw] rounded'>Img 4</li>
-      </ul>
+      <div className='bg-white text-lime-50 h-[85vh] flex'>
+        <div className='logos relative flex h-[15vh] m-0 p-0 w-[100vw] '>
+          <ul className='flex flex-nowrap gap-10 mx-5 h-[15vh]'>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 1</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 2</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 3</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 4</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 5</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 6</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 7</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 8</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 9</li>
+            <li className='bg-dark p-2 w-[200px] rounded'>Img 10</li>
+          </ul>
 
+
+          <div className="absolute top-0 left-0 w-[350px] h-full z-2"
+              style={{ background: 'linear-gradient(to left, rgba(255, 255, 255, 0), light 50%, light)' }}>
+          </div>
+          <div className="absolute top-0 right-0 w-[350px] h-full z-2"
+              style={{ background: 'linear-gradient(to right, rgba(255, 255, 255, 0), light 50%, light' }}>
+          </div>
+
+
+        </div>
       </div>
 
       {/* This is the fourth section */}
