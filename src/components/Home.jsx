@@ -10,6 +10,7 @@ const Home = () => {
   const point = useRef(null);
   const photoAbout = useRef(null);
   const textAbout = useRef(null);
+  const containerRef = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -75,6 +76,40 @@ const Home = () => {
       } 
     );
 
+    const images = gsap.utils.toArray('.scroll-image');
+
+    gsap.to(images, {
+      x: "100vw",
+      ease: "linear",
+      duration: 10, // Duration of one full cycle
+      repeat: -1, // Infinite loop
+      yoyo: true, // Repeat back to start
+      modifiers: {
+        xPercent: gsap.utils.wrap(-100, 0), // Creates the infinite looping effect
+      },
+    });
+
+    const testimonials = gsap.utils.toArray('.testimonial');
+
+    testimonials.forEach((testimonial) => {
+      gsap.fromTo(
+        testimonial,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: testimonial,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    });
+
   }, []);
 
   return (
@@ -98,25 +133,33 @@ const Home = () => {
       </div>
 
       {/* This is the second section */}
-      <div className='bg-light h-[100vh] flex justify-center items-center'>
+      <div className='bg-dark h-[100vh] flex justify-center items-center'>
         <div className='flex justify-center items-center'>
 
 
           <div className='m-0 p-0 w-[50vw] flex justify-center items-center'>
-            <img ref={photoAbout} src="public/people/sandLogo.jpg" className="lg:w-[600px] lg:rounded-lg w-[400px] rounded-full mx-2  shadow-lg" alt="Sand" />
+            <img ref={photoAbout} src="public/people/sandLogo.jpg" className="xl:w-[600px] xl:rounded-lg w-[400px] rounded-full mx-2 shadow-lg" alt="Sand" />
           </div>
 
 
 
           <div className='m-0 p-0 w-[50vw] flex justify-center items-center'>
-            <div ref={textAbout} className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[800px] lg:w-[500px]'>
-              <h2 className="text-3xl text-white mb-4">Who we are</h2>
-              <p className="text-center text-gray-300">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              </p>
+            <div ref={textAbout} className='flex flex-col items-center'>
+              <div className='bg-dark flex flex-col items-center rounded-lg shadow-md p-8 w-[800px] lg:w-[500px]'>
+                <h2 className="text-3xl text-white mb-4">Who we are</h2>
+                <p className="text-center text-gray-300">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                </p>
+              </div>
+              <button
+                className="bg-dark text-light mt-4 p-2 w-[400px] lg:w-[200px] rounded-lg transition transform hover:scale-105"
+                onClick={() => window.location.href = '/about'}
+              >
+                Learn More
+              </button>
             </div>
           </div>
 
@@ -127,40 +170,84 @@ const Home = () => {
 
 
       {/* This is the third section */}
-      <div className='bg-white text-lime-50 h-[85vh] flex mt-20'>
-        <div className='logos relative flex h-[15vh] m-0 p-0 w-[100vw] '>
-          <ul className='flex flex-nowrap gap-10 mx-5 h-[15vh]'>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 1</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 2</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 3</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 4</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 5</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 6</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 7</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 8</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 9</li>
-            <li className='bg-dark p-2 w-[200px] rounded'>Img 10</li>
-          </ul>
-
-
-          <div className="absolute top-0 left-0 w-[350px] h-full z-2"
-              style={{ background: 'linear-gradient(to left, rgba(255, 255, 255, 0), white)' }}>
+      <div className='bg-dark text-lime-50 h-[45vh] flex py-20'>
+        <div className='m-0 p-0 relative flex w-[100vw] '>
+          <div ref={containerRef} className=' justify-center w-[100vw] py-[10px] flex flex-nowrap gap-10 overflow-hidden'>
+            <img src="public/people/pose.jpg" className="h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/Lpose.jpg" className=" h-[400px] scroll-image border-2 border-black"  alt="Logo" />
+            <img src="public/people/beach.jpg" className=" h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/3man.jpg" className=" h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/playing.jpg" className="h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/hike.jpg" className=" h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/pose.jpg" className="h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/Lpose.jpg" className=" h-[400px] scroll-image border-2 border-black"  alt="Logo" />
+            <img src="public/people/beach.jpg" className=" h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/3man.jpg" className=" h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/people/playing.jpg" className="h-[400px] scroll-image border-2 border-black" alt="Logo" />
+            <img src="public/hike.jpg" className=" h-[400px] scroll-image border-2 border-black" alt="Logo" />
           </div>
-          <div className="absolute top-0 right-0 w-[350px] h-full z-2"
-              style={{ background: 'linear-gradient(to right, rgba(255, 255, 255, 0), white)' }}>
-          </div>
-
-
         </div>
       </div>
 
       {/* This is the fourth section */}
-      <div className='bg-dark h-[65vh]'>
-        <div className='flex justify-center items-center h-full'>
-          <h2 className='text-light text-4xl'>Contact Us</h2>
+      <div className='bg-dark h-[85vh]'>
+        <div className='flex flex-col justify-center items-center h-full'>
+          <h2 className='text-light text-4xl mb-20'>Testimonials</h2>
+          
+          {/* Testimonial Section */}
+          <div className='flex justify-center items-center flex-col gap-20'>
+      <div className='flex items-center gap-10 testimonial'>
+        {/* Testimonial Image */}
+        <img 
+          src='public/people/pp1.jpg' 
+          alt='Person 1' 
+          className='w-[150px] h-[150px] object-cover rounded-full border-2 border-light'
+        />
+        {/* Testimonial Text */}
+        <div className='text-light text-lg max-w-[500px]'>
+          <p>&quot;This retreat was a life-changing experience for me. The brotherhood, the spiritual growth, and the sense of community made it unforgettable.&quot;</p>
+          <span className='block mt-4 text-sm font-bold'>- Brother A</span>
         </div>
       </div>
-      
+
+      <div className='flex items-center gap-10 testimonial'>
+        {/* Testimonial Text */}
+        <div className='text-light text-lg max-w-[500px] text-right'>
+          <p>&quot;Attending the retreat was one of the best decisions I've ever made. It brought me closer to my brothers and deepened my spiritual connection. I left feeling refreshed and inspired.&quot;</p>
+          <span className='block mt-4 text-sm font-bold'>- Brother B</span>
+        </div>
+        {/* Testimonial Image */}
+        <img 
+          src='public/people/pp2.jpg' 
+          alt='Person 2' 
+          className='w-[150px] h-[150px] object-cover rounded-full border-2 border-light'
+        />
+      </div>
+
+      <div className='flex items-center gap-10 testimonial'>
+        {/* Testimonial Image */}
+        <img 
+          src='public/people/pp3.jpg' 
+          alt='Person 3' 
+          className='w-[150px] h-[150px] object-cover rounded-full border-2 border-light'
+        />
+        {/* Testimonial Text */}
+        <div className='text-light text-lg max-w-[500px]'>
+          <p>&quot;The retreat provided a perfect balance of reflection, camaraderie, and growth. It helped me find clarity and a sense of purpose. I’m grateful for the bond we built.&quot;</p>
+          <span className='block mt-4 text-sm font-bold'>- Brother C</span>
+        </div>
+      </div>
+
+            <button 
+              className='bg-light text-dark p-2 rounded-lg transition transform hover:scale-105 mt-10' 
+              onClick={() => window.location.href = '/contact'}>
+              Contact Us
+            </button>
+
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };
